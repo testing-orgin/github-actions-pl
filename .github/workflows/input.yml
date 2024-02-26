@@ -1,0 +1,17 @@
+name: Sample Workflow with Input
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch name to trigger the workflow'
+        required: true
+        default: 'main'  # You can set a default value or leave it empty
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
