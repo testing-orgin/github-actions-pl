@@ -1,0 +1,29 @@
+name: My Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    inputs:
+      param1:
+        description: 'Parameter 1 description'
+        required: true
+      param2:
+        description: 'Parameter 2 description'
+        required: true
+      param3:
+        description: 'Parameter 3 description'
+        required: true
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Add your workflow steps here
+      # You can access input parameters as ${{ inputs.param1 }}, ${{ inputs.param2 }}, ${{ inputs.param3 }}
+
