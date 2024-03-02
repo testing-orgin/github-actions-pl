@@ -1,33 +1,27 @@
-name: Sample Workflow
+name: Manual Workflow
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      flm_version:
+        description: 'FLM Version'
+        required: true
+      kube_version:
+        description: 'Kubernetes Version'
+        required: true
+      name:
+        description: 'Name'
+        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    inputs:
-      param1:
-        description: 'Parameter 1 description'
-        required: true
-      param2:
-        description: 'Parameter 2 description'
-        required: true
-      param3:
-        description: 'Parameter 3 description'
-        required: true
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
       - name: Print Parameters
         run: |
-          echo "Parameter 1: ${{ inputs.param1 }}"
-          echo "Parameter 2: ${{ inputs.param2 }}"
-          echo "Parameter 3: ${{ inputs.param3 }}"
+          echo "FLM Version: ${{ github.event.inputs.flm_version }}"
+          echo "Kubernetes Version: ${{ github.event.inputs.kube_version }}"
+          echo "Name: ${{ github.event.inputs.name }}"
 
       # Add your workflow steps here
